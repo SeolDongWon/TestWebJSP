@@ -3,17 +3,15 @@ package bbs;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-//import controller.DBcon;
+import DBcon.DBcon;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-//import model.VisitVO;
+import model.VisitListVO;
 
 public class VisitList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,17 +20,14 @@ public class VisitList extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
 		StringBuffer sql = new StringBuffer();
-//		VisitVO vVO = null;
+		VisitListVO vVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		con = DBcon.getConnection();
 		sql.append("select no, writer, memo, regdate from visit order by no desc");
 
 		try {
-//			con = DBcon.getConnection();
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 			pstmt = con.prepareStatement(sql.toString());
 			pw.println("<html>");
 			pw.println("<head><title>방명록4</title>");
@@ -41,9 +36,6 @@ public class VisitList extends HttpServlet {
 			pw.println("</head>");
 			pw.println("<body>");
 			pw.println("<div class='container mt-3'>");
-//			pw.println("<h2>Striped Rows</h2>");
-//			pw.println("<p>The .table-striped class adds zebra-stripes to a table:</p> ");
-//			pw.println("<table align=center width=500 border=1>");
 			pw.println("<table class=\"table table-striped\">");
 			pw.println("<thead>");
 			pw.println("<tr>");
@@ -56,41 +48,23 @@ public class VisitList extends HttpServlet {
 			pw.println("<tbody>");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-//				vVO = new VisitVO();
-//				vVO.setNo(rs.getInt("no"));
-//				vVO.setWriter(rs.getString("writer"));
-//				vVO.setMemo(rs.getString("memo"));
-//				vVO.setRegdate(rs.getString("regdate"));
+				vVO = new VisitListVO();
+				vVO.setNo(rs.getInt("no"));
+				vVO.setWriter(rs.getString("writer"));
+				vVO.setMemo(rs.getString("memo"));
+				vVO.setRegdate(rs.getDate("regdate"));
 
-				int no = rs.getInt("no");
-				String writer = rs.getString("writer");
-				String memo = rs.getString("memo");
-				java.sql.Date regdate = rs.getDate("regdate");
 				pw.println("<tr>");
-//				pw.println("<th width=50>번호</th>");
-//				pw.println("<td width=50 align=center>" + no + "</td>");
-				pw.println("<td>" + no + "</td>");
-//				pw.println("<th width=70>작성자</th>");
-//				pw.println("<td width=180 align=center>" + writer + "</td>");
-				pw.println("<td>" + writer + "</td>");
-//				pw.println("<td width=50 align=center>날짜</td>");
-//				pw.println("<td width=100 align=center>" + regdate + "</td>");
-				pw.println("<td>" + regdate + "</td>");
-//				pw.println("</tr>");
-//				pw.println("<tr>");
-//				pw.println("<th width=50>내용</th>");
-//				pw.println("<td colspan=5>&nbsp;<textarea row=3 cols=50>" + memo + "</textarea></td>");
-				pw.println("<td>" + memo + "</td>");
+				pw.println("<td>" + vVO.getNo() + "</td>");
+				pw.println("<td>" + vVO.getWriter() + "</td>");
+				pw.println("<td>" + vVO.getRegdate() + "</td>");
+				pw.println("<td>" + vVO.getMemo() + "</td>");
 				pw.println("</tr>");
 
 			}
 			pw.println("</tbody>");
 			pw.println("</table>");
-//			pw.println("<p>");
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} 
 		

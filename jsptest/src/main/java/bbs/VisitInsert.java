@@ -1,18 +1,16 @@
 package bbs;
 
 import jakarta.servlet.ServletException;
-//import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import controller.DBcon;
+import DBcon.DBcon;
+
 
 public class VisitInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,19 +35,13 @@ public class VisitInsert extends HttpServlet {
 		// 데이터베이스연결
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		try {
-//			con = DBcon.getConnection();
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			con = DBcon.getConnection();
 			ps = con.prepareStatement(query.toString());
 			ps.setString(1, writer);
 			ps.setString(2, memo);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} 
 		

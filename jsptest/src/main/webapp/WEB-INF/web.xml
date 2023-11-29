@@ -109,4 +109,14 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>memberJoin</display-name>
+    <servlet-name>memberJoin</servlet-name>
+    <servlet-class>login.memberJoin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>memberJoin</servlet-name>
+    <url-pattern>/memberJoin</url-pattern>
+  </servlet-mapping>
 </web-app>

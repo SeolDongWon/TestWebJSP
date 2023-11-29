@@ -1,0 +1,101 @@
+@charset "UTF-8";#container {
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+form {
+    color: rgb(177, 176, 176);
+}
+
+td {
+    padding: 5px;
+}
+
+form>div>div>div {
+    padding: 5px;
+}
+
+#idPwEmailTable {
+    border: 2px solid  rgb(177, 176, 176);;
+}
+
+#idPwEmailTable tr {
+    background-color: white;
+}
+
+.error {
+    color: red;
+}
+
+#errorBox {
+    min-height: 15px;
+}
+.icon {
+    width: 100%;
+    text-align: center;
+}
+
+#pwNo {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+form>div>table {
+    width: 100%;
+}
+
+input {
+    border: none;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+#idPwEmailDiv {
+    border-radius: 10px;
+}
+
+#nameBirthTelDiv {
+    border: 2px solid  rgb(177, 176, 176);;
+    background-color: white;
+}
+
+
+#nameBirthTelDivInner>div {
+    display: flex;
+}
+
+.icon2 {
+    width: 40px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+tr.input.R>td>input::placeholder,
+tr.input.R>td>i,
+tr.input.R>td>input,
+div.input.R>input::placeholder,
+div.input.R>i,
+div.input.R>input,
+div.input.R>div>label {
+    color: red;
+    text-decoration: underline;
+}
+
+div.input.R>div>label,
+div.input.R,
+tr.input.R {
+    border: 2px solid red;
+}
+
+#submit {
+    background-color: rgb(26, 187, 26);
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memberJoin</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- javaScript -->
+    <script src="../js/memberJoin.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="../css/memberJoin.css">
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/3096a27d00.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="sizeChange()" onresize="sizeChange()">
+    <div id="container" class="w-100">
+        <div id="inner">
+            <div id="formD">
+                <form action="/jsptest/memberJoin" name="form1" method="post" onsubmit="doSubmit(); return false;">
+                    <div id="idPwEmailDiv">
+                        <table id="idPwEmailTable">
+                            <tr id="inputIdTr" class="input">
+                                <td><i class="icon fa-regular fa-user"></i></td>
+                                <td><input type="text" value="" name="inputId" id="inputId" placeholder="아이디"
+                                        onfocus="inputFocusTb(id)" onblur="idCheck(id)"></td>
+                            </tr>
+                            <tr id="inputPwTr">
+                                <td><i class="icon fa-solid fa-lock"></i></td>
+                                <td><input class="input" type="password" value=""name="inputPw" id="inputPw" placeholder="비밀번호"
+                                        onfocus="inputFocusTb(id)" onblur="pwCheck(id)"></td>
+                                <td><span class="error" id="pwNo"></span></td>
+                                <td class="rightEnd" id="pwEye"><i class="icon fa-solid fa-eye" onclick="pwView()"></i>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="errorBox">
+                        <div class="error" id="inputIdError"></div>
+                        <div class="error" id="inputPwError"></div>
+                    </div>
+                    <div id="nameBirthTelDiv">
+                        <div id="nameBirthTelDivInner">
+                            <div id="inputNameDiv" class="input">
+                                <i class="icon2 fa-regular fa-user"></i>
+                                <input type="text" value="" name="inputName" id="inputName" placeholder="이름"
+                                    onfocus="inputFocusDv(id)" onblur="nameCheck(id)">
+                            </div>
+                            <div id="inputBirthDiv" class="input">
+                                <i class="icon2 fa-solid fa-cake-candles"></i>
+                                <input type="text" value="" name="inputBirth" id="inputBirth" placeholder="생년월일 8자리"
+                                    onfocus="inputFocusDv(id)" onblur="birthCheck(id)">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="errorBox">
+                        <div class="error" id="inputNameError"></div>
+                        <div class="error" id="inputBirthError"></div>
+                    </div>
+                    <div id="submitDiv">
+                        <input type="submit" name="button" id="submit" value="인증요청">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
