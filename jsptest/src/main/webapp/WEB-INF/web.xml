@@ -161,4 +161,34 @@
     <exception-type>java.lang.NullPointerException</exception-type>
     <location>/error/errorNullPointer.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>DeleteList</display-name>
+    <servlet-name>DeleteList</servlet-name>
+    <servlet-class>bbs.DeleteList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteList</servlet-name>
+    <url-pattern>/DeleteList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>idOverlapCheck</display-name>
+    <servlet-name>idOverlapCheck</servlet-name>
+    <servlet-class>login.idOverlapCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>idOverlapCheck</servlet-name>
+    <url-pattern>/idOverlapCheck</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>idOverlapInput</display-name>
+    <servlet-name>idOverlapInput</servlet-name>
+    <servlet-class>login.idOverlapInput</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>idOverlapInput</servlet-name>
+    <url-pattern>/idOverlapInput</url-pattern>
+  </servlet-mapping>
 </web-app>

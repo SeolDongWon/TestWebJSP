@@ -28,21 +28,14 @@ public class Login extends HttpServlet {
 
 		PrintWriter pw = response.getWriter();
 		HttpSession session = request.getSession(false);
-//		HttpSession session = request.getSession();
-//		System.out.println("세션 아이디 : " + session.getId());
 		StringBuffer sql = new StringBuffer();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		VisitListVO vVO = null;
-		con = DBcon.getConnection();
-		sql.append("select no, writer, memo, regdate from visit order by no desc");
+		
 
 		try {
-
-			pstmt = con.prepareStatement(sql.toString());
-			rs = pstmt.executeQuery();
-
 			pw.println("<html>");
 			pw.println("<head><title>메인</title>");
 			pw.println(
@@ -56,6 +49,7 @@ public class Login extends HttpServlet {
 //				String pwd = (String) session.getAttribute("pwd");
 				System.out.println("세션 아이디 : " + sessionId);
 				String user = (String) session.getAttribute("user");
+				String id = (String) session.getAttribute("id");
 				pw.println("<body>");
 				pw.println("<table align='center' border='1' width='300'>");
 				pw.println("<tr>");
@@ -75,7 +69,7 @@ public class Login extends HttpServlet {
 				pw.println("<div class='mb-3'>");
 				pw.println("<label for='exampleFormControlInput1' class='form-label'>작성자</label>");
 //				pw.println("<writer name='writer' value='"+user+"'>");
-				pw.println("<input type='text' class='form-control' name='writer' readonly value='"+user+"'>");
+				pw.println("<input type='text' class='form-control' name='writer' readonly value='"+id+"'>");
 //				pw.println("<input type='text' class='form-control' name='writer' placeholder='이름' >");
 				pw.println("</div>");
 				pw.println("<div class='mb-3'>");
@@ -100,6 +94,10 @@ public class Login extends HttpServlet {
 				pw.println("</tr>");
 				pw.println("</thead>");
 				pw.println("<tbody>");
+				con = DBcon.getConnection();
+				sql.append("select no, writer, memo, regdate from visit order by no desc");
+				pstmt = con.prepareStatement(sql.toString());
+				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					vVO = new VisitListVO();
 					vVO.setNo(rs.getInt("no"));
@@ -140,8 +138,8 @@ public class Login extends HttpServlet {
 				pw.println("<input type='submit' value='로그인'>");
 				pw.println("</td>");
 				pw.println("</tr>");
-				pw.println("</form>");
 				pw.println("</table>");
+				pw.println("</form>");
 				pw.println("</body>");
 				pw.println("</html>");
 			}

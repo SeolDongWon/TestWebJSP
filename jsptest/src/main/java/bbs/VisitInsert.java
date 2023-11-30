@@ -4,6 +4,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+//import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,6 +23,10 @@ public class VisitInsert extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		StringBuffer query = new StringBuffer();
+		
 		// 값을 가져온다. 패턴검색
 		writer = request.getParameter("writer");
 		memo = request.getParameter("memo");
@@ -28,11 +34,9 @@ public class VisitInsert extends HttpServlet {
 		System.out.println("memo =" + memo);
 
 		// 데이터베이스 저장 insert
-		StringBuffer query = new StringBuffer();
 		query.append("insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,?,?,to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'))");
 		// 데이터베이스연결
-		Connection con = null;
-		PreparedStatement ps = null;
+		
 		try {
 			con = DBcon.getConnection();
 			ps = con.prepareStatement(query.toString());

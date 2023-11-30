@@ -31,16 +31,36 @@ public class memberJoin extends HttpServlet {
     	inputBirth = request.getParameter("inputBirth");
 		System.out.println("writer ="+inputId);
 		System.out.println("memo ="+inputPw);
-
-		// 데이터베이스 저장 insert
-		StringBuffer query = new StringBuffer();
-		query.append("insert into LOGIN(ID, PASS, name, birth) values(?,?,?,?)");
-		// 데이터베이스연결
 		Connection con = null;
 		PreparedStatement ps = null;
+		StringBuffer sql = new StringBuffer();
+		
+		// 데이터베이스연결
+		con = DBcon.getConnection();
+		
+		sql.append("insert into LOGIN(ID, PASS, name, birth) values(?,?,?,?)");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		// 데이터베이스 저장 insert
 		try {
-			con = DBcon.getConnection();
-			ps = con.prepareStatement(query.toString());
+			sql.append("insert into LOGIN(ID, PASS, name, birth) values(?,?,?,?)");
+			ps = con.prepareStatement(sql.toString());
 			ps.setString(1, inputId);
 			ps.setString(2, inputPw);
 			ps.setString(3, inputName);

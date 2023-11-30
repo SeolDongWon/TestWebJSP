@@ -69,7 +69,6 @@ public class LoginCheck extends HttpServlet {
 //				 클라이언트으 ㅣ정보를 HttpSession객체에 저장
 				session.setAttribute("user", name);
 				session.setAttribute("id", id);
-				session.setAttribute("pwd", pwd);
 			}
 			
 		} catch (SQLException e) {
