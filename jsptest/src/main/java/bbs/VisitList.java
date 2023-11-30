@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.VisitListVO;
 
 public class VisitList extends HttpServlet {
@@ -18,6 +19,13 @@ public class VisitList extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html;charset=utf-8");
+		
+//		========================================================================
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			response.sendRedirect("Login");
+		}
+//		========================================================================		
 		PrintWriter pw = response.getWriter();
 		StringBuffer sql = new StringBuffer();
 		VisitListVO vVO = null;
@@ -29,6 +37,7 @@ public class VisitList extends HttpServlet {
 
 		try {
 			pstmt = con.prepareStatement(sql.toString());
+			rs = pstmt.executeQuery();
 			pw.println("<html>");
 			pw.println("<head><title>방명록4</title>");
 			pw.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet'>");
@@ -46,13 +55,12 @@ public class VisitList extends HttpServlet {
 			pw.println("</tr>");
 			pw.println("</thead>");
 			pw.println("<tbody>");
-			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				vVO = new VisitListVO();
 				vVO.setNo(rs.getInt("no"));
 				vVO.setWriter(rs.getString("writer"));
 				vVO.setMemo(rs.getString("memo"));
-				vVO.setRegdate(rs.getDate("regdate"));
+				vVO.setRegdate(rs.getString("regdate"));
 
 				pw.println("<tr>");
 				pw.println("<td>" + vVO.getNo() + "</td>");
@@ -64,6 +72,7 @@ public class VisitList extends HttpServlet {
 			}
 			pw.println("</tbody>");
 			pw.println("</table>");
+			pw.println("</div>");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
@@ -75,6 +84,8 @@ public class VisitList extends HttpServlet {
 				}
 				if (con != null) {
 					con.close();
+				}if (rs!=null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

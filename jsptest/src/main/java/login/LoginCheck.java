@@ -43,10 +43,10 @@ public class LoginCheck extends HttpServlet {
 //		 클라이언트의 정보를 HttpSesstion객체에 유지시킨다.
 //		-----------------------------------------------------------
 		if (dbID.equals(id) && dbPWD.equals(pwd)) {
-////			 HttpSession객체 얻기
+//			 HttpSession객체 얻기
 			HttpSession session = request.getSession();
-////			 클라이언트으 ㅣ정보를 HttpSession객체에 저장
-			session.setAttribute("User", id);
+//			 클라이언트으 ㅣ정보를 HttpSession객체에 저장
+			session.setAttribute("user", id);
 			response.sendRedirect("Login");
 			return;
 		}
@@ -65,12 +65,27 @@ public class LoginCheck extends HttpServlet {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				HttpSession session = request.getSession();
+				String name = rs.getString("name");
 //				 클라이언트으 ㅣ정보를 HttpSession객체에 저장
-				session.setAttribute("User", id);
+				session.setAttribute("user", name);
+				session.setAttribute("id", id);
+				session.setAttribute("pwd", pwd);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+
+				if (con != null) {
+					con.close();
+				}
+				if (rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		response.sendRedirect("Login");

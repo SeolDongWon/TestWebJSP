@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.Objects;
 
 public class VisitListVO {
@@ -8,7 +8,7 @@ public class VisitListVO {
 	private int no; // 일련번호
 	private String writer; // 글쓴이
 	private String memo; // 메모
-	private Date regdate; // 날짜
+	private String regdate; // 날짜
 	
 	
 	
@@ -30,10 +30,10 @@ public class VisitListVO {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	@Override

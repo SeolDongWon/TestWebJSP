@@ -15,14 +15,16 @@ public class DBcon {
 		FileInputStream fileInputStream = null;
 
 		try {
+//			==========================================================================경로찾기 실패로 작동 안함
 //			fileInputStream = new FileInputStream("db.properties"); //경로챶기 웨안뒘???
 //			properties.load(fileInputStream);
-
 //			String driver = properties.getProperty("driver"); // 드라이버 클래스 경로
 //			String url = properties.getProperty("url"); // 아이피 포트번호
 //			String username = properties.getProperty("username");
 //			String password = properties.getProperty("password");
-
+//			Class.forName(driver); // JDBC 드라이버 로드
+//			connection = DriverManager.getConnection(url, username, password); // DB 연결
+//			==========================================================================경로찾기 실패로 작동 안함	
 			Class.forName("oracle.jdbc.driver.OracleDriver"); // JDBC 드라이버 로드
 			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr"); // DB 연결
 

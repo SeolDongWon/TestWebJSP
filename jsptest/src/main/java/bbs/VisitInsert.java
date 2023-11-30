@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 import DBcon.DBcon;
 
-
 public class VisitInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String writer;
@@ -21,17 +20,16 @@ public class VisitInsert extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 값을 가져온다. 패턴검색
 		writer = request.getParameter("writer");
 		memo = request.getParameter("memo");
-		System.out.println("writer ="+writer);
-		System.out.println("memo ="+memo);
+		System.out.println("writer =" + writer);
+		System.out.println("memo =" + memo);
 
 		// 데이터베이스 저장 insert
 		StringBuffer query = new StringBuffer();
-		query.append("insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,?,?,sysdate)");
+		query.append("insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,?,?,to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'))");
 		// 데이터베이스연결
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -43,8 +41,8 @@ public class VisitInsert extends HttpServlet {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		
+		}
+
 		finally {
 			if (ps != null) {
 				try {
@@ -57,14 +55,18 @@ public class VisitInsert extends HttpServlet {
 				}
 			}
 		}
-		//보여줄 화면설계된 페이지 요청
+		// 보여줄 화면설계된 페이지 요청
 		response.sendRedirect("VisitList");
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		processRequest(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		processRequest(request, response);
+	}
 }
