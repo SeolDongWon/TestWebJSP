@@ -95,6 +95,7 @@ public class LoginInfo extends HttpServlet {
 			pw.println("<table class=\"table table-striped\">");
 			pw.println("<thead>");
 			pw.println("<tr>");
+			pw.println("<th>삭제체크</th>");
 			pw.println("<th>번호</th>");
 			pw.println("<th>작성자</th>");
 			pw.println("<th>날짜</th>");
@@ -114,6 +115,8 @@ public class LoginInfo extends HttpServlet {
 			ps.setString(1, id);
 //			rs = null;
 			rs = ps.executeQuery();
+			pw.println("<form method='post' action='DeleteList'>");
+			pw.println("<input type='submit' value='삭제'>");
 			while (rs.next()) {
 				vVO = new VisitListVO();
 				vVO.setNo(rs.getInt("no"));
@@ -122,18 +125,18 @@ public class LoginInfo extends HttpServlet {
 				vVO.setRegdate(rs.getString("regdate"));
 				
 				pw.println("<tr>");
+				pw.println("<td><input type='checkbox' name='writeNo' value='"+vVO.getNo()+"'></td>");
+//				pw.println("<td><input type='checkbox' name='writeNo' value='333'></td>");
 				pw.println("<td>" + vVO.getNo() + "</td>");
 				pw.println("<td>" + vVO.getWriter() + "</td>");
 				pw.println("<td>" + vVO.getRegdate() + "</td>");
 				pw.println("<td>" + vVO.getMemo() + "</td>");
 				pw.println("<td>");
-				pw.println("<form method='post' action='DeleteList'>");
-				pw.println("<p name ='no' id='no' value='33'></p>");
-				pw.println("<input type='submit' value='삭제'>");
-				pw.println("</form>");
+				
 				pw.println("<td>");
 				pw.println("</tr>");
 			}
+			pw.println("</form>");
 			pw.println("</tbody>");
 			pw.println("</table>");
 			pw.println("</div>");

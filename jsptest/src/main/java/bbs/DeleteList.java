@@ -24,52 +24,61 @@ public class DeleteList extends HttpServlet {
 	}
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("DeleteList");
+		System.out.println("start DeleteList");
 		PrintWriter pw = response.getWriter();
 		HttpSession session = request.getSession();
-		
+
 		StringBuffer sql = new StringBuffer();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
+
 		String writer = null;
-		String no = null;
-		System.out.println("DeleteList");
+		String[] values = null;
+//		String no = null;
+//		no = request.getParameter("no");
+		sql.append("delete from visit where writer = ? and no = ?");
+		con = DBcon.getConnection();
+
 		writer = (String) session.getAttribute("id");
-		no = request.getParameter("no");
+		values = request.getParameterValues("writeNo");
+
 		System.out.println(writer);
-		System.out.println(no);
-		
-//		sql.append(
-//				"delete from visit where writer = ? and no = ?");
-//		// 데이터베이스연결
-//		try {
-//			System.out.println("DeleteList");
-//			con = DBcon.getConnection();
-//			ps = con.prepareStatement(sql.toString());
-//			ps.setString(1, writer);
-//			ps.setInt(2, Integer.parseInt(no));
-//			ps.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		finally {
-//			if (ps != null) {
-//				try {
-//					ps.close();
-//					if (con != null) {
-//						con.close();
-//					}
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-		// 보여줄 화면설계된 페이지 요청
+		if (values != null) {
+			try {
+				ps = con.prepareStatement(sql.toString());
+				for (int i = 0; i < values.length; i++) {
+					System.out.println(values[i]);
+					ps.setString(1, writer);
+					ps.setInt(2, Integer.parseInt(values[i]));
+					ps.executeUpdate();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+					if (con != null) {
+						con.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
 		response.sendRedirect("LoginInfo");
 	}
+
+//		System.out.println(no);
+
+	// 데이터베이스연결
+
+	// 보여줄 화면설계된 페이지 요청
+
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -16,10 +16,10 @@ function doSubmit() {
 		}
 	}
 }
-function idOverlapCheck(){
-    let frm = document.form1;
-    
-    window.open('http://localhost:8080/jsptest/idOverlapInput?id='+frm.inputId.value);
+function idOverlapCheck() {
+	let frm = document.form1;
+
+	window.open('http://localhost:8080/jsptest/idOverlapInput?id=' + frm.inputId.value);
 }
 function idCheck() {
 	let frm = document.form1;
@@ -92,8 +92,19 @@ function nameCheck() {
 function birthCheck() {
 	let frm = document.form1;
 	let date = new Date();
+	let year = date.getFullYear();
+	let month = date.getMonth() + 1;
+	// 날짜가 1~9면 앞에 0이 사라지는 문제 수정
+	if (month < 10) {
+		month = '0' + month;
+	}
+	let day = date.getDate();
+	if (day < 10) {
+		day = '0' + day;
+	}
+	// 날짜가 1~9면 앞에 0이 사라지는 문제 수정
 	let dday = '';
-	dday = dday + (date.getFullYear()) + (date.getMonth() + 1) + date.getDate();
+	dday = dday + year + month + day;
 	document.getElementById("inputBirthDiv").style = "";
 	document.getElementById('inputBirthError').innerHTML = "";
 	document.getElementById("inputBirthDiv").className = "input R";
@@ -106,13 +117,13 @@ function birthCheck() {
 		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일은 8자리 숫자로 입력해주세요.";
 		return false;
 	} else if (!regBirth.test(frm.inputBirth.value)) {
-		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요";
+		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요1";
 		return false;
 	} else if (frm.inputBirth.value < dday - 1100000) {
-		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요";
+		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요2";
 		return false;
 	} else if (frm.inputBirth.value > dday) {
-		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요";
+		document.getElementById('inputBirthError').innerHTML = "*생년월일:생년월일이 정확한지 확인해주세요3" + dday;
 		return false;
 	}
 	else {

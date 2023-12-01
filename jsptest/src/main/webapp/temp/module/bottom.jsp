@@ -1,7 +1,3 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<hr color="red">
-
-<p>bottom.jsp의 내용입니다.</p>
-</body>
-</html>
+하단메뉴:소개|도움말|약관|사이트맵

@@ -10,14 +10,14 @@ import java.util.Properties;
 
 public class DBcon {
 	public static Connection getConnection() {
-		Properties properties = new Properties();
 		Connection connection = null;
-		FileInputStream fileInputStream = null;
 
+		FileInputStream fileInputStream = null;
+		Properties properties = new Properties();
 		try {
-//			==========================================================================경로찾기 실패로 작동 안함
 //			fileInputStream = new FileInputStream("db.properties"); //경로챶기 웨안뒘???
 //			properties.load(fileInputStream);
+////			==========================================================================경로찾기 실패로 작동 안함
 //			String driver = properties.getProperty("driver"); // 드라이버 클래스 경로
 //			String url = properties.getProperty("url"); // 아이피 포트번호
 //			String username = properties.getProperty("username");

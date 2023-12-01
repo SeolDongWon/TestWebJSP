@@ -29,8 +29,10 @@ public class memberJoin extends HttpServlet {
     	inputPw = request.getParameter("inputPw");
     	inputName = request.getParameter("inputName");
     	inputBirth = request.getParameter("inputBirth");
-		System.out.println("writer ="+inputId);
-		System.out.println("memo ="+inputPw);
+		System.out.println("inputId ="+inputId);
+		System.out.println("inputPw ="+inputPw);
+		System.out.println("inputName ="+inputName);
+		System.out.println("inputBirth ="+inputBirth);
 		Connection con = null;
 		PreparedStatement ps = null;
 		StringBuffer sql = new StringBuffer();
@@ -39,27 +41,9 @@ public class memberJoin extends HttpServlet {
 		con = DBcon.getConnection();
 		
 		sql.append("insert into LOGIN(ID, PASS, name, birth) values(?,?,?,?)");
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
+	
 		// 데이터베이스 저장 insert
 		try {
-			sql.append("insert into LOGIN(ID, PASS, name, birth) values(?,?,?,?)");
 			ps = con.prepareStatement(sql.toString());
 			ps.setString(1, inputId);
 			ps.setString(2, inputPw);

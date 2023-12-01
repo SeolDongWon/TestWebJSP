@@ -50,11 +50,11 @@ end;
 show error;
 
 CREATE table LOGIN (
-    ID VARCHAR2(12) NOT NULL,
-    PASS VARCHAR2(12) NOT NULL,
+    id VARCHAR2(12) NOT NULL,
+    pass VARCHAR2(12) NOT NULL,
     name varchar2(12) not null,
     birth varchar2(8) not null,
-    writeCnt Number default 0 not null,
+    writeCnt Number default 0,
     constraint LOGIN_PK primary key (ID)
     );
     
@@ -67,6 +67,7 @@ CREATE table VISIT (
     );
 
 alter table LOGIN add (writeCnt Number default 0 not null);
+alter table LOGIN modify (writeCnt Number default 0  not null);
 select to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS') from dual;
 insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,'123','456',to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'));
 select (select writecnt from login where id='seol1')+1 from dual;
@@ -111,10 +112,23 @@ drop trigger emp_trg01;
 drop trigger emp_trg02;
 
 rollback;
-select * from visit;
+select * from visit order by no desc;
 select * from login;
+describe login;
 commit;
 
 delete from visit where writer = 'seol2' and no = 17;
 
 insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,'seol2','456',to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'));
+insert into login(id, pass, name, birth) values('seol2','22222222','º≥µø≈ı','19900202');
+
+
+CREATE TABLE  person (
+    ID VARCHAR2(20) NOT NULL ENABLE, 
+    NAME VARCHAR2(20), 
+    EMAIL VARCHAR2(30), 
+    PRIMARY KEY (ID) ENABLE
+);
+drop table "person";
+desc "person";
+desc person;

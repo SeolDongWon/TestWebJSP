@@ -1,10 +1,12 @@
-<%@ page contentType="text/html;charset=euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%
 Date date = new Date();
+String name = "seol";
 %>
 <html>
 <body>
-top.jsp ÆäÀÌÁöÀÇ ³»¿ëÀÔ´Ï´Ù.<br></br>
-<%=date.toString()%><br></br>
+top.jsp íŽ˜ì´ì§€ì˜ ë‚´ìš©ìž…ë‹ˆë‹¤.<br></br>
+
 <hr color="red">
