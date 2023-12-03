@@ -21,9 +21,9 @@ Enumeration<String> em = application.getInitParameterNames();
 		<input type="text" name="age">
 		<input type="submit" value="Call Source Servlet">
 	</form>
-	<a href="http://localhost:8080/jsptest/directive/errinvoke.jsp?name=seol">errorinvoke?name=seol</a>
-	<a href="http://localhost:8080/jsptest/directive/errinvoke.jsp">errorinvoke</a>
-	<a href="http://localhost:8080/jsptest/Source">Call Source Servlet</a>
+	<a href="/jsptest/directive/errinvoke.jsp?name=seol">errorinvoke?name=seol</a>
+	<a href="/jsptest/directive/errinvoke.jsp">errorinvoke</a>
+	<a href="/jsptest/Source">Call Source Servlet</a>
 	<div class="container">
 		<ul class="list-group">
 			<%

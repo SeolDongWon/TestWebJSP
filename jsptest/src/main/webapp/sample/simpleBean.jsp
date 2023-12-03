@@ -20,5 +20,6 @@ request.setCharacterEncoding("UTF-8");
 	<font size="5"> 메세지 : <jsp:getProperty name="msg"
 			property="message" /> <%--<%=message%> --%>
 	</font>
+	<%response.sendRedirect("/jsptest/Login"); %>
 </body>
 </html>

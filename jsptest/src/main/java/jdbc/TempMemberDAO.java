@@ -4,17 +4,8 @@ import java.sql.*;
 import java.util.*;
 
 public class TempMemberDAO {
-//	private final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
-//	private final String JDBC_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-//	private final String USER = "hr";
-//	private final String PASS = "hr";
 
 	public TempMemberDAO() {
-//		try {
-//			Class.forName(JDBC_DRIVER);
-//		} catch (Exception e) {
-//			System.out.println("Error : JDBC 드라이버 로딩 실패");
-//		}
 	}
 
 	public Vector<TempMemberVO> getMemberList() {
@@ -26,7 +17,6 @@ public class TempMemberDAO {
 		try {
 			pool = ConnectionPool.getInstance();
 			conn = pool.getConnection();
-//			conn = DriverManager.getConnection(JDBC_URL, USER, PASS);
 			String strQuery = "select * from TempMember";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(strQuery);

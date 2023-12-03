@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/forward/view.jsp">
+	<form action="/jsptest/forward/view.jsp">
 		보고 싶은 페이지 선택: 
 		<select name="code">
 			<option value="A">A 페이지</option>

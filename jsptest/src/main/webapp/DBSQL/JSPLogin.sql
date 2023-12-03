@@ -122,6 +122,25 @@ delete from visit where writer = 'seol2' and no = 17;
 insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,'seol2','456',to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'));
 insert into login(id, pass, name, birth) values('seol2','22222222','설동투','19900202');
 
+CREATE TABLE "TEMPMEMBER" (
+"ID" VARCHAR2(20) NOT NULL, 
+"PASSWD" VARCHAR2(20), 
+"NAME" VARCHAR2(20), 
+"MEM_NUM1" VARCHAR2(6), 
+"MEM_NUM2" VARCHAR2(7), 
+"E_MAIL" VARCHAR2(30), 
+"PHONE" VARCHAR2(30), 
+"ZIPCODE" VARCHAR2(7), 
+"ADDRESS" VARCHAR2(60), 
+"JOB" VARCHAR2(30), 
+PRIMARY KEY ("ID") ENABLE
+ );
+-- 주의: NOT NULL ENABLE : NULL 값 입력 불가
+-- 주의: NOT NULL DISABLE : NULL 값 입력 가능
+insert into tempMember values('fffff', '1111', '홍길동', '123456', '7654321', 
+'hong@hanmail.net', '02-1234', '100-100', '서울', '프로그래머');
+commit;
+
 
 CREATE TABLE  person (
     ID VARCHAR2(20) NOT NULL ENABLE, 
@@ -132,3 +151,25 @@ CREATE TABLE  person (
 drop table "person";
 desc "person";
 desc person;
+
+drop table projects1member;
+
+create table projects1member(
+id varchar2(30) not null,
+password varchar2(30) not null,
+name varchar2(30) not null,
+birthday varchar2(30) not null,
+tel varchar2(30) not null,
+postcode varchar2(30) not null,
+address varchar2(100) not null,
+constraint projectseolmember_pk PRIMARY KEY (id)
+);
+
+select * from projects1member;
+
+
+
+eolmember;
+insert into projectseolmember(id, password, name, birthday, tel, postcode, address) 
+values('seol1','11111111','설동원','1990-02-01','1011111111','12915','왕십리 한동타워');
+commit;

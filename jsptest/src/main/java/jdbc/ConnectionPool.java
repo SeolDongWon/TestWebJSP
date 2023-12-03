@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 public final class ConnectionPool {
+	
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -11,6 +12,7 @@ public final class ConnectionPool {
 			cnfe.printStackTrace();
 		}
 	}
+	
 	// 사용하지 않은 커넥션 즉, 초기 커넥션을 저장하는 변수
 	private ArrayList<Connection> free;
 	private ArrayList<Connection> used; // 사용중인 커넥션을 저장하는 변수
@@ -54,6 +56,7 @@ public final class ConnectionPool {
 
 	// 새로운 커넥션 객체를 생성함.
 	private Connection getNewConnection() throws SQLException {
+
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection(url, user, password);

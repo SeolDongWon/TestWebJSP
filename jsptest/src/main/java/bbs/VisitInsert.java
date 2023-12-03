@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import DBcon.DBcon;
+import dbcon.DBcon;
 
 public class VisitInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -1,20 +1,17 @@
 package bbs;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import DBcon.DBcon;
+import dbcon.DBcon;
 
 public class DeleteList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,18 +22,14 @@ public class DeleteList extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("start DeleteList");
-		PrintWriter pw = response.getWriter();
 		HttpSession session = request.getSession();
 
 		StringBuffer sql = new StringBuffer();
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 
 		String writer = null;
 		String[] values = null;
-//		String no = null;
-//		no = request.getParameter("no");
 		sql.append("delete from visit where writer = ? and no = ?");
 		con = DBcon.getConnection();
 
@@ -72,7 +65,6 @@ public class DeleteList extends HttpServlet {
 		response.sendRedirect("LoginInfo");
 	}
 
-//		System.out.println(no);
 
 	// 데이터베이스연결
 

@@ -17,24 +17,6 @@ FileInputStream fileInputStream = null;
 Properties properties = new Properties();
 int counter = 0;
 try {
-	//		==========================================================================경로찾기 실패로 작동 안함
-
-	//fileInputStream = new FileInputStream("jdbc.properties"); //경로챶기 웨안뒘???
-	//fileInputStream = new FileInputStream("/jdbc/jdbc.properties"); //경로챶기 웨안뒘???
-	//fileInputStream = new FileInputStream("/jdbc/jdbc.properties"); //경로챶기 웨안뒘???
-	//properties.load(fileInputStream);
-	//String driver = properties.getProperty("driver"); // 드라이버 클래스 경로
-	//String url = properties.getProperty("url"); // 아이피 포트번호
-	//String username = properties.getProperty("username");
-	//String password = properties.getProperty("password");
-	//System.out.println(driver);
-	//System.out.println(url);
-	//System.out.println(username);
-	//System.out.println(password);
-	//	Class.forName(driver); // JDBC 드라이버 로드
-	//	conn = DriverManager.getConnection(url, username, password); // DB 연결
-	//		==========================================================================경로찾기 실패로 작동 안함	
-
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 	stmt = conn.createStatement();
@@ -49,7 +31,7 @@ try {
 	<h2>JSP 스크립틀릿에서 데이터베이스 연동 예제입니다....</h2>
 	<br></br>
 	<h3>회원정보</h3>
-	<table bordercolor="#0000ff" border="1">
+	<table style="border: 1px solid #0000ff;">
 		<tr>
 			<td><strong>ID</strong></td>
 			<td><strong>PASSWD</strong></td>
