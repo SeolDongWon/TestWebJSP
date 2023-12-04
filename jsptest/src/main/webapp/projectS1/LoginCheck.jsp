@@ -15,7 +15,8 @@ if (s1MV != null) {
 	session.setAttribute("birthday", s1MV.getBirthday());
 	session.setAttribute("tel", s1MV.getTel());
 	session.setAttribute("postcode", s1MV.getPostcode());
-	session.setAttribute("address", s1MV.getAddress());
+	session.setAttribute("mainAddress", s1MV.getMainAddress());
+	session.setAttribute("detailAddress", s1MV.getDetailAddress());
 %>
 <script>
 	alert("로그인성공")

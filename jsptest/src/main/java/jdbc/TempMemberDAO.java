@@ -3,9 +3,26 @@ package jdbc;
 import java.sql.*;
 import java.util.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 public class TempMemberDAO {
 
 	public TempMemberDAO() {
+	}
+
+	public Connection getConnection() {
+		Connection conn = null;
+		try {
+			Context init = new InitialContext();
+			DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/myOracle");
+			conn = ds.getConnection();
+			System.out.println("Start Connection Pool by DataSource");
+		} catch (Exception e) {
+			System.err.println("Connection 생성실패");
+		}
+		return conn;
 	}
 
 	public Vector<TempMemberVO> getMemberList() {
@@ -17,6 +34,7 @@ public class TempMemberDAO {
 		try {
 			pool = ConnectionPool.getInstance();
 			conn = pool.getConnection();
+//			conn = this.getConnection();
 			String strQuery = "select * from TempMember";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(strQuery);
@@ -37,21 +55,19 @@ public class TempMemberDAO {
 		} catch (Exception ex) {
 			System.out.println("Exception" + ex);
 		} finally {
-			if (rs != null)
-				try {
+			try {
+				if (rs != null) {
 					rs.close();
-				} catch (SQLException e) {
 				}
-			if (stmt != null)
-				try {
+				if (stmt != null) {
 					stmt.close();
-				} catch (SQLException e) {
 				}
-			if (conn != null)
-				try {
+				if (conn != null) {
 					conn.close();
-				} catch (SQLException e) {
 				}
+//				pool.releaseConnection(conn);
+			} catch (SQLException e) {
+			}
 		}
 		return vecList;
 	}

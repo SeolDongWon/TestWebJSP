@@ -22,8 +22,9 @@ public final class ConnectionPool {
 	private int initialCons = 10; // 최초로 초기 커넥션수
 	private int maxCons = 20; // 최대 커넥션수
 	private int numCons = 0; // 총 Connection 수
+	//싱글톤1
 	private static ConnectionPool cp;
-
+	//싱글톤2
 	public static ConnectionPool getInstance() {
 		try {
 			if (cp == null) {

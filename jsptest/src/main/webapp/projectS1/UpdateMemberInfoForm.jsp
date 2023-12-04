@@ -17,21 +17,20 @@
 <body>
 	<div class="container">
 		<div class="inner">
-			<form action="SetMember.jsp" name="joinForm" method="post">
+			<form action="UpdateMemberInfo.jsp" name="joinForm" method="post">
 				<table>
 					<tr>
-						<td><label for="id">아이디</label></td>
+						<td><label for="in">아이디</label></td>
 						<td style="width: 100px;"><input type="text" name="id"
-							id="id" onfocus="focusOn(id)"
-							onblur="focusOff(id); idCheck(); idDuplicateCheck()"></td>
+							id="id" readonly value="<%=session.getAttribute("id")%>"></td>
 						<td>
-							<div class="error" id="idError"></div>
+							<div class="error" id="idError">아이디는 변경불가</div>
 						</td>
 					</tr>
 					<tr>
 						<td><label for="password">비밀번호</label></td>
-						<td><input type="password" name="password" id="password"
-							onfocus="focusOn(id)" onblur="focusOff(id);passwordCheck()"></td>
+						<td><input type="text" name="password" id="password"
+							onfocus="focusOn(id)" onblur="focusOff(id);passwordCheck()"value="<%=session.getAttribute("password")%>"></td>
 						<td>
 							<div class="error" id="passwordError"></div>
 						</td>
@@ -47,7 +46,7 @@
 					<tr>
 						<td><label for="name">이름</label></td>
 						<td><input type="text" name="name" id="name"
-							onfocus="focusOn(id)" onblur="focusOff(id);nameCheck()"></td>
+							onfocus="focusOn(id)" onblur="focusOff(id);nameCheck()"value="<%=session.getAttribute("name")%>"></td>
 						<td>
 							<div class="error" id="nameError"></div>
 						</td>
@@ -55,7 +54,7 @@
 					<tr>
 						<td><label for="birthday">생년월일</label></td>
 						<td><input type="date" name="birthday" id="birthday"
-							onfocus="focusOn(id)" onblur="focusOff(id);birthdayCheck()"></td>
+							onfocus="focusOn(id)" onblur="focusOff(id);birthdayCheck()"value="<%=session.getAttribute("birthday")%>"></td>
 						<td>
 							<div class="error" id="birthdayError"></div>
 						</td>
@@ -63,7 +62,7 @@
 					<tr>
 						<td><label for="tel">전화번호</label></td>
 						<td><input type="number" name="tel" id="tel"
-							onfocus="focusOn(id)" onblur="focusOff(id);telCheck()"></td>
+							onfocus="focusOn(id)" onblur="focusOff(id);telCheck()"value="<%=session.getAttribute("tel")%>"></td>
 						<td>
 							<div class="error" id="telError"></div>
 						</td>
@@ -72,8 +71,8 @@
 						<td><label>주소</label></td>
 						<td colspan="2"><input type="text" class="inputAddr"
 							name="postcode" id="postcode" placeholder="우편번호" size="10px"
-							readonly> <input type="text" name="extraAddress"
-							id="extraAddress" placeholder="참고항목" size="10px" readonly>
+							readonly value="<%=session.getAttribute("postcode")%>"> <input type="text" name="extraAddress"
+							id="extraAddress" placeholder="참고항목" size="10px" readonly >
 							<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
 						</td>
 					</tr>
@@ -81,14 +80,15 @@
 						<td></td>
 						<td colspan="2"><input type="text" class="inputAddr"
 							name="mainAddress" id="mainAddress" placeholder="주소" size="50px"
-							readonly></td>
+							readonly value="<%=session.getAttribute("mainAddress")%>"></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td colspan="2"><input type="text" class="inputAddr"
 							name="detailAddress" id="detailAddress" placeholder="상세주소"
 							onfocus="focusOn(id)" onblur="focusOff(id);addressCheck()"
-							size="50px"> <!-- <input type="text" name="address"id="address" placeholder="adress" style="display: none;"> -->
+							size="50px" value="<%=session.getAttribute("detailAddress")%>" > 
+							<!-- <input type="text" name="address"id="address" placeholder="adress" style="display: none;"> -->
 						</td>
 					</tr>
 					<tr>
@@ -99,7 +99,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="button" value="회원가입" onclick="joinSend()" />
+						<td><input type="button" value="수정하기" onclick="joinSend()" />
 						</td>
 						<td><a href="/jsptest/projectS1/JoinMain.jsp">JoinMain</a></td>
 					</tr>
@@ -269,7 +269,7 @@ input {
   }
   document.getElementById('addressError').innerHTML = "&nbsp;";
   document.getElementById('detailAddress').classList.remove('focusRed');
-/*   document.getElementById('address').value=inputAddrArr[1].value+inputAddrArr[2].value ; */
+  /* document.getElementById('address').value=inputAddrArr[1].value+inputAddrArr[2].value ; */
   return true;
 }
     function idDuplicateCheck(){
@@ -279,7 +279,19 @@ input {
     	let id = document.joinForm.id.value;
     	let options = 'width=auto, height=auto';
     	window.open('/jsptest/projectS1/IdDuplicateCheck.jsp?id='+id,'idDupCheck',options);
-    	
+    <%-- 	<%
+    	if (session.getAttribute("idDuplicateCheck") != null) {
+    		System.out.println("idDuplicateCheck 널아님");
+    	}else{
+    		System.out.println("idDuplicateCheck 널");
+    	} --%>
+    		/* String sessionId = session.getId(); */
+    	/* 	System.out.println("세션 아이디 : " + sessionId); */
+    	/* 	String user = (String) session.getAttribute("user"); */
+    	/* %> */
+    	<%-- <%boolean check = (boolean)session.getAttribute("idDuplicateCheck");%>
+    	let check=<%=check%> --%>
+    	/* console.log(check) */
     }
     
     

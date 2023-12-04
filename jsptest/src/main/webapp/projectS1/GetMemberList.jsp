@@ -11,13 +11,14 @@
 <body>
 	<table>
 		<tr>
-			<td><strong>ID</strong></td>
-			<td><strong>PASSWD</strong></td>
-			<td><strong>NAME</strong></td>
-			<td><strong>BIRTHDAY</strong></td>
-			<td><strong>TEL</strong></td>
-			<td><strong>POSTCODE</strong></td>
-			<td><strong>ADDRESS</strong></td>
+			<td><strong>id</strong></td>
+			<td><strong>password</strong></td>
+			<td><strong>name</strong></td>
+			<td><strong>birthday</strong></td>
+			<td><strong>tel</strong></td>
+			<td><strong>postcode</strong></td>
+			<td><strong>mainAddress</strong></td>
+			<td><strong>detailAddress</strong></td>
 		</tr>
 		<jsp:useBean id="sMDAB" class="projectS1.S1MemberDAO"></jsp:useBean>
 		<%
@@ -32,7 +33,8 @@
 			<td><%=vo.getBirthday()%></td>
 			<td><%=vo.getTel()%></td>
 			<td><%=vo.getPostcode()%></td>
-			<td><%=vo.getAddress()%></td>
+			<td><%=vo.getMainAddress()%></td>
+			<td><%=vo.getDetailAddress()%></td>
 		</tr>
 		<%
 		}

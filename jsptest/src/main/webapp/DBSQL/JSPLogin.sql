@@ -137,7 +137,13 @@ PRIMARY KEY ("ID") ENABLE
  );
 -- 주의: NOT NULL ENABLE : NULL 값 입력 불가
 -- 주의: NOT NULL DISABLE : NULL 값 입력 가능
-insert into tempMember values('fffff', '1111', '홍길동', '123456', '7654321', 
+insert into tempMember values('aaaaa', '1111', '홍길동', '123456', '7654321', 
+'hong@hanmail.net', '02-1234', '100-100', '서울', '프로그래머');
+insert into tempMember values('bbbbb', '1111', '홍길동', '123456', '7654321', 
+'hong@hanmail.net', '02-1234', '100-100', '서울', '프로그래머');
+insert into tempMember values('ccccc', '1111', '홍길동', '123456', '7654321', 
+'hong@hanmail.net', '02-1234', '100-100', '서울', '프로그래머');
+insert into tempMember values('ddddd', '1111', '홍길동', '123456', '7654321', 
 'hong@hanmail.net', '02-1234', '100-100', '서울', '프로그래머');
 commit;
 
@@ -161,7 +167,8 @@ name varchar2(30) not null,
 birthday varchar2(30) not null,
 tel varchar2(30) not null,
 postcode varchar2(30) not null,
-address varchar2(100) not null,
+mainaddress varchar2(100) not null,
+detailaddress varchar2(100) not null,
 constraint projectseolmember_pk PRIMARY KEY (id)
 );
 
@@ -173,3 +180,35 @@ eolmember;
 insert into projectseolmember(id, password, name, birthday, tel, postcode, address) 
 values('seol1','11111111','설동원','1990-02-01','1011111111','12915','왕십리 한동타워');
 commit;
+
+create table zipcode  (
+   seq                  NUMBER(10)  not null,
+   zipcode              VARCHAR2(50),
+   sido                 VARCHAR2(50),
+   gugun                VARCHAR2(50),
+   dong                 VARCHAR2(50),
+   ri                   VARCHAR2(80),
+   bunji                VARCHAR2(50),
+   constraint PK_ZIPCODE primary key (seq)
+);
+commit;
+drop table zipcode;
+describe zipcode;
+select seq, zipcode, sido, gugun, dong, ri, bunji from zipcode order by seq;
+select * from zipcode;
+
+CREATE table "STUDENT" (
+ "ID" VARCHAR2(12) NOT NULL,
+ "PASS" VARCHAR2(12) NOT NULL,
+ "NAME" VARCHAR2(10) NOT NULL,
+ "PHONE1" VARCHAR2(3) NOT NULL,
+ "PHONE2" VARCHAR2(4) NOT NULL,
+ "PHONE3" VARCHAR2(4) NOT NULL,
+ "EMAIL" VARCHAR2(30) NOT NULL,
+ "ZIPCODE" VARCHAR2(7) NOT NULL,
+ "ADDRESS1" VARCHAR2(120) NOT NULL,
+ "ADDRESS2" VARCHAR2(50) NOT NULL,
+ constraint "STUDENT_PK" primary key ("ID")
+);
+
+select * from student;

@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import dbcon.DBcon;
 
 public class DeleteList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,7 +30,7 @@ public class DeleteList extends HttpServlet {
 		String writer = null;
 		String[] values = null;
 		sql.append("delete from visit where writer = ? and no = ?");
-		con = DBcon.getConnection();
+		con = dBcon.DBcon.getConnection();
 
 		writer = (String) session.getAttribute("id");
 		values = request.getParameterValues("writeNo");

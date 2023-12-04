@@ -1,4 +1,4 @@
-package dbcon;
+package dBcon;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

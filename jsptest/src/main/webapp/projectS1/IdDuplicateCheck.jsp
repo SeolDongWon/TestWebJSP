@@ -5,9 +5,6 @@
 String id = request.getParameter("id");
 S1MemberDAO sMDA = new S1MemberDAO();
 boolean idCheck = sMDA.idDuplicateCheck(id);
-System.out.println("3 : " + idCheck);
-session.setAttribute("idDuplicateCheck", idCheck);
-System.out.println("4 : " + session.getAttribute("idDuplicateCheck"));
 %>
 <!-- <!DOCTYPE html>
 <html>
@@ -34,6 +31,8 @@ System.out.println("4 : " + session.getAttribute("idDuplicateCheck"));
 		}
 		alert(nono);
 	}
+	console.log(opener.document.getElementById("id").value);
+	opener.document.getElementById("id").value="sssssss";
 	window.close();
 </script>
 <!-- </html> -->

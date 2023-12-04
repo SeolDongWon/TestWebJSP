@@ -31,7 +31,7 @@
 			<td width='300' align='center'><%=name%>님 로그인 되었습니다.</td>
 		</tr>
 		<tr>
-			<td align='center'><a href='/jsptest/projectS1/JoinFormBean.jsp'>회원정보</a>
+			<td align='center'><a href='/jsptest/projectS1/UpdateMemberInfoForm.jsp'>회원정보</a>
 				<a href='/jsptest/projectS1/Logout.jsp'>로그아웃</a></td>
 		</tr>
 	</table>

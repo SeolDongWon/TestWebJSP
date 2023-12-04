@@ -7,15 +7,16 @@ public class S1MemberVO {
 	private String birthday;
 	private String tel;
 	private String postcode;
-	private String address;
+	private String mainAddress;
+	private String detailAddress;
 
 	public S1MemberVO() {
-		this(null, null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null, null);
 
 	}
 
 	public S1MemberVO(String id, String password, String name, String birthday, String tel, String postcode,
-			String address) {
+			String mainAddress, String detailAddress) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -23,7 +24,8 @@ public class S1MemberVO {
 		this.birthday = birthday;
 		this.tel = tel;
 		this.postcode = postcode;
-		this.address = address;
+		this.mainAddress = mainAddress;
+		this.detailAddress = detailAddress;
 	}
 
 	public String getId() {
@@ -74,13 +76,22 @@ public class S1MemberVO {
 		this.postcode = postcode;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getMainAddress() {
+		return mainAddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setMainAddress(String mainAddress) {
+		this.mainAddress = mainAddress;
 	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+
 	
 
 }

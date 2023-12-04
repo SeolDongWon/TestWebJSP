@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import dbcon.DBcon;
+import dBcon.DBcon;
 
 import java.sql.ResultSet;
 

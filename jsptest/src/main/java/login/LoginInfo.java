@@ -16,7 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dbcon.DBcon;
+import dBcon.DBcon;
+
 
 public class LoginInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;

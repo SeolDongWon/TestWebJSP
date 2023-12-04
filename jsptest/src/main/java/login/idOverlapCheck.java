@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dbcon.DBcon;
 
 public class idOverlapCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,7 +33,7 @@ public class idOverlapCheck extends HttpServlet {
 		String inputId = request.getParameter("inputId");
 		request.setAttribute("id", inputId);
 
-		con = DBcon.getConnection();
+		con = dBcon.DBcon.getConnection();
 		sql.append("select * from login where id=?");
 
 		try {
