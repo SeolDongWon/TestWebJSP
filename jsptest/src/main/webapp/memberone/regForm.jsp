@@ -17,7 +17,7 @@
 				<td colspan="2" align="center">회원 가입 정보 입력</td>
 			</tr>
 			<tr>
-				<td align="right">아이디2 :</td>
+				<td align="right">아이디 :</td>
 				<td><input type="text" name="id" />&nbsp; <input type="button"
 					value="중복확인" onclick="idCheck(this.form.id.value)"></td>
 			</tr>

@@ -192,11 +192,14 @@ create table zipcode  (
    constraint PK_ZIPCODE primary key (seq)
 );
 commit;
+
 drop table zipcode;
 describe zipcode;
 select seq, zipcode, sido, gugun, dong, ri, bunji from zipcode order by seq;
 select * from zipcode;
 
+drop table trainee;
+drop table student;
 CREATE table "STUDENT" (
  "ID" VARCHAR2(12) NOT NULL,
  "PASS" VARCHAR2(12) NOT NULL,
@@ -212,3 +215,6 @@ CREATE table "STUDENT" (
 );
 
 select * from student;
+desc student;
+
+create table 

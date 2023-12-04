@@ -1,9 +1,10 @@
+<%@page import="memberone.StudentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="memberone.ZipCodeVO"%>
 <%@page import="java.util.Vector"%>
-<jsp:useBean id="dao" class="memberone.StudentDAO" />
 <%
+StudentDAO dao = StudentDAO.getInstance();
 /* request.setCharacterEncoding("euc-kr"); */
 String check = request.getParameter("check");
 System.out.println(check);
