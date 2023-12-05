@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="vo" class="memberone.StudentVO" />
-<jsp:setProperty name='vo' property="*" />
+<jsp:setProperty name='vo' property="*"/>
 <%
 StudentDAO dao = StudentDAO.getInstance();
 boolean flag = dao.memberInsert(vo);
