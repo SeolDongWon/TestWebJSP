@@ -30,19 +30,19 @@ int depth = article.getDepth();
 			bgcolor="<%=bodyback_c%>" align="center">
 			<tr height="30">
 				<td align="center" width="125" bgcolor="<%=value_c%>">글번호</td>
-				<td align="center" width="125" align="center"><%=article.getNum()%></td>
+				<td align="center" width="125" ><%=article.getNum()%></td>
 				<td align="center" width="125" bgcolor="<%=value_c%>">조회수</td>
-				<td align="center" width="125" align="center"><%=article.getReadcount()%></td>
+				<td align="center" width="125" ><%=article.getReadcount()%></td>
 			</tr>
 			<tr height="30">
 				<td align="center" width="125" bgcolor="<%=value_c%>">작성자</td>
-				<td align="center" width="125" align="center"><%=article.getWriter()%></td>
+				<td align="center" width="125" ><%=article.getWriter()%></td>
 				<td align="center" width="125" bgcolor="<%=value_c%>">작성일</td>
 				<td align="center" width="125" align="center"><%=article.getRegdate()%></td>
 			</tr>
 			<tr height="30">
 				<td align="center" width="125" bgcolor="<%=value_c%>">글제목</td>
-				<td align="center" width="375" align="center" colspan="3"><%=article.getSubject()%></td>
+				<td align="center" width="375" colspan="3"><%=article.getSubject()%></td>
 			</tr>
 			<tr height="30">
 				<td align="center" width="125" bgcolor="<%=value_c%>">글내용</td>
@@ -56,6 +56,8 @@ int depth = article.getDepth();
 					onclick="document.location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
 					&nbsp;&nbsp;&nbsp;&nbsp; 
 					<!-- 수정<1> --> 
+					<input type="button" value="답글쓰기" onclick="document.location.href='writeForm.jsp?num=<%=num %>&ref=<%=ref %>&step=<%=step %>&depth=<%=depth %>'">
+					&nbsp;&nbsp;&nbsp;&nbsp; 
 					<input type="button"value="글목록"	onclick="document.location.href='list.jsp?pageNum=<%=pageNum%>'">
 				</td>
 			</tr>

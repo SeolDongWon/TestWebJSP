@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 body {
-	background-color: beige;
-/*	FONT-SIZE: 9pt;
+	background-color: red;
+	FONT-SIZE: 9pt;
 	COLOR: black;
 	LINE-HEIGHT: 160%;
 	FONT-FAMILY:
-		굴림, verdana, tahoma;*/
+		굴림, verdana, tahoma;
 }
-/*
+
 TD {
 	FONT-SIZE: 9pt;
 	COLOR: black;
@@ -77,4 +77,4 @@ A:hover {
 A:visited {
 	text-decoration: none;
 	color: #330066
-}*/
+}

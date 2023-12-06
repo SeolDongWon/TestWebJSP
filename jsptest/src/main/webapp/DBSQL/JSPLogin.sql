@@ -122,18 +122,18 @@ delete from visit where writer = 'seol2' and no = 17;
 insert into visit(no, writer, memo, regdate) values(visit_seq.nextval,'seol2','456',to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS'));
 insert into login(id, pass, name, birth) values('seol2','22222222','설동투','19900202');
 
-CREATE TABLE "TEMPMEMBER" (
-"ID" VARCHAR2(20) NOT NULL, 
-"PASSWD" VARCHAR2(20), 
-"NAME" VARCHAR2(20), 
-"MEM_NUM1" VARCHAR2(6), 
-"MEM_NUM2" VARCHAR2(7), 
-"E_MAIL" VARCHAR2(30), 
-"PHONE" VARCHAR2(30), 
-"ZIPCODE" VARCHAR2(7), 
-"ADDRESS" VARCHAR2(60), 
-"JOB" VARCHAR2(30), 
-PRIMARY KEY ("ID") ENABLE
+CREATE TABLE TEMPMEMBER (
+ID VARCHAR2(20) NOT NULL, 
+PASSWD VARCHAR2(20), 
+NAME VARCHAR2(20), 
+MEM_NUM1 VARCHAR2(6), 
+MEM_NUM2 VARCHAR2(7), 
+E_MAIL VARCHAR2(30), 
+PHONE VARCHAR2(30), 
+ZIPCODE VARCHAR2(7), 
+ADDRESS VARCHAR2(60), 
+JOB VARCHAR2(30), 
+PRIMARY KEY (ID) ENABLE
  );
 -- 주의: NOT NULL ENABLE : NULL 값 입력 불가
 -- 주의: NOT NULL DISABLE : NULL 값 입력 가능
@@ -154,8 +154,8 @@ CREATE TABLE  person (
     EMAIL VARCHAR2(30), 
     PRIMARY KEY (ID) ENABLE
 );
-drop table "person";
-desc "person";
+drop table person;
+desc person;
 desc person;
 
 drop table projects1member;
@@ -200,38 +200,39 @@ select * from zipcode;
 
 drop table trainee;
 drop table student;
-CREATE table "STUDENT" (
- "ID" VARCHAR2(12) NOT NULL,
- "PASS" VARCHAR2(12) NOT NULL,
- "NAME" VARCHAR2(10) NOT NULL,
- "PHONE1" VARCHAR2(3) NOT NULL,
- "PHONE2" VARCHAR2(4) NOT NULL,
- "PHONE3" VARCHAR2(4) NOT NULL,
- "EMAIL" VARCHAR2(30) NOT NULL,
- "ZIPCODE" VARCHAR2(7) NOT NULL,
- "ADDRESS1" VARCHAR2(120) NOT NULL,
- "ADDRESS2" VARCHAR2(50) NOT NULL,
- constraint "STUDENT_PK" primary key ("ID")
+CREATE table STUDENT (
+ ID VARCHAR2(12) NOT NULL,
+ PASS VARCHAR2(12) NOT NULL,
+ NAME VARCHAR2(10) NOT NULL,
+ PHONE1 VARCHAR2(3) NOT NULL,
+ PHONE2 VARCHAR2(4) NOT NULL,
+ PHONE3 VARCHAR2(4) NOT NULL,
+ EMAIL VARCHAR2(30) NOT NULL,
+ ZIPCODE VARCHAR2(7) NOT NULL,
+ ADDRESS1 VARCHAR2(120) NOT NULL,
+ ADDRESS2 VARCHAR2(50) NOT NULL,
+ constraint STUDENT_PK primary key (ID)
 );
 
 select * from student;
 desc student;
 
-
-CREATE TABLE "BOARD" (
-"NUM" NUMBER(7,0) NOT NULL ENABLE, 
-"WRITER" VARCHAR2(12) NOT NULL ENABLE, 
-"EMAIL" VARCHAR2(30) NOT NULL ENABLE, 
-"SUBJECT" VARCHAR2(50) NOT NULL ENABLE, 
-"PASS" VARCHAR2(10) NOT NULL ENABLE, 
-"READCOUNT" NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
-"REF" NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
-"STEP" NUMBER(3,0) DEFAULT 0 NOT NULL ENABLE, 
-"DEPTH" NUMBER(3,0) DEFAULT 0 NOT NULL ENABLE, 
-"REGDATE" TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
-"CONTENT" VARCHAR2(4000) NOT NULL ENABLE, 
-"IP" VARCHAR2(20) NOT NULL ENABLE, 
-CONSTRAINT "BOARD_PK" PRIMARY KEY ("NUM") ENABLE
+drop table board;
+drop SEQUENCE board_seq;
+CREATE TABLE board (
+NUM NUMBER(7,0) NOT NULL ENABLE, 
+WRITER VARCHAR2(12) NOT NULL ENABLE, 
+EMAIL VARCHAR2(30) NOT NULL ENABLE, 
+SUBJECT VARCHAR2(50) NOT NULL ENABLE, 
+PASS VARCHAR2(10) NOT NULL ENABLE, 
+READCOUNT NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
+REF NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
+STEP NUMBER(3,0) DEFAULT 0 NOT NULL ENABLE, 
+DEPTH NUMBER(3,0) DEFAULT 0 NOT NULL ENABLE, 
+REGDATE TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
+CONTENT VARCHAR2(4000) NOT NULL ENABLE, 
+IP VARCHAR2(20) NOT NULL ENABLE, 
+CONSTRAINT BOARD_PK PRIMARY KEY (NUM) ENABLE
  );
  
  CREATE SEQUENCE board_seq -- 시퀀스이름
@@ -243,3 +244,62 @@ CONSTRAINT "BOARD_PK" PRIMARY KEY ("NUM") ENABLE
  
  select * from board;
  select * from board order by num desc;
+ 
+ --자동 글쓰기
+declare
+v_num number :=0;
+v_WRITER VARCHAR2(12):='autoWriter';
+v_EMAIL VARCHAR2(30):='autoEmail';
+v_SUBJECT VARCHAR2(50):='autoSubject';
+v_CONTENT VARCHAR2(4000):='autoContent<br>password:1111<br>num : ';
+v_IP VARCHAR2(20):='100.0';
+begin
+ for i in 0..30
+    loop
+    v_num:=board_seq.nextval;
+    insert into board(num,writer,email,subject,pass,ref,content,ip) 
+    values(v_num,concat(v_WRITER,v_num),concat(v_EMAIL,v_num),concat(v_SUBJECT,v_num),'1111',v_num,concat(v_CONTENT,v_num),v_IP);
+    END loop;
+ end;
+ /
+ show error;
+ commit;
+ 
+CREATE TABLE boardtest(
+WRITER VARCHAR2(12) NOT NULL ENABLE, 
+EMAIL VARCHAR2(30) NOT NULL ENABLE, 
+SUBJECT VARCHAR2(50) NOT NULL ENABLE, 
+PASS VARCHAR2(10) NOT NULL ENABLE, 
+READCOUNT NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
+REGDATE TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
+CONTENT VARCHAR2(4000) NOT NULL ENABLE, 
+IP VARCHAR2(20) NOT NULL ENABLE
+ );
+ 
+select * from boardtest;
+drop table boardtest;
+declare
+v_num number :=0;
+v_WRITER VARCHAR2(12):='autoWriter';
+v_EMAIL VARCHAR2(30):='autoEmail';
+v_SUBJECT VARCHAR2(50):='autoSubject';
+v_CONTENT VARCHAR2(4000):='autoContent';
+v_IP VARCHAR2(20):='100.0';
+begin
+  
+ for i in 0..2
+    loop
+    v_num:=v_num+1;
+    insert into boardtest(writer,email,subject,pass,content,ip) 
+    values(concat(v_WRITER,v_num),concat(v_EMAIL,v_num),concat(v_SUBJECT,v_num),'1111',concat(v_CONTENT,v_num),v_IP);
+    END loop;
+ end;
+ /
+ show error;
+select * from board; 
+ select * from board order by regdate desc, ref desc, step asc;
+ select * from board order by ref desc, step asc;
+ select * from (select rownum rnum, num, writer, email, subject, pass, regdate, readcount, ref, step, depth, content, ip from (select * from board order by ref desc, step asc)) where rnum>=1 and rnum<=10;
+ select * from (select rownum rnum, num, writer, email, subject, pass, regdate, readcount, ref, step, depth, content, ip from (select * from board order by ref desc, step asc)) where rnum>=10 and rnum<=21;
+ 
+ 
