@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 public final class ConnectionPool {
-	
+
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -12,7 +12,7 @@ public final class ConnectionPool {
 			cnfe.printStackTrace();
 		}
 	}
-	
+
 	// 사용하지 않은 커넥션 즉, 초기 커넥션을 저장하는 변수
 	private ArrayList<Connection> free;
 	private ArrayList<Connection> used; // 사용중인 커넥션을 저장하는 변수
@@ -22,9 +22,12 @@ public final class ConnectionPool {
 	private int initialCons = 10; // 최초로 초기 커넥션수
 	private int maxCons = 20; // 최대 커넥션수
 	private int numCons = 0; // 총 Connection 수
-	//싱글톤1
+	
+	// 싱글톤1
 	private static ConnectionPool cp;
-	//싱글톤2
+
+	// 싱글톤2
+
 	public static ConnectionPool getInstance() {
 		try {
 			if (cp == null) {

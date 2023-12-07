@@ -44,8 +44,8 @@ public class Source extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("name", "Seol.D.W");
 		session.setAttribute("age", age);
-//		response.sendRedirect("Destination");
-		response.sendRedirect("Destination?age2=30");
+		response.sendRedirect("Destination");
+//		response.sendRedirect("Destination?age2=30");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

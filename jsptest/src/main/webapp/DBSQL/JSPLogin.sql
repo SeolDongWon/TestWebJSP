@@ -219,6 +219,7 @@ desc student;
 
 drop table board;
 drop SEQUENCE board_seq;
+
 CREATE TABLE board (
 NUM NUMBER(7,0) NOT NULL ENABLE, 
 WRITER VARCHAR2(12) NOT NULL ENABLE, 
@@ -232,8 +233,11 @@ DEPTH NUMBER(3,0) DEFAULT 0 NOT NULL ENABLE,
 REGDATE TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
 CONTENT VARCHAR2(4000) NOT NULL ENABLE, 
 IP VARCHAR2(20) NOT NULL ENABLE, 
+filename VARCHAR2(20),
+origfilename VARCHAR2(20),
 CONSTRAINT BOARD_PK PRIMARY KEY (NUM) ENABLE
  );
+ describe board;
  
  CREATE SEQUENCE board_seq -- 시퀀스이름
  START WITH 1 -- 시작을 1로 설정
@@ -265,37 +269,6 @@ begin
  show error;
  commit;
  
-CREATE TABLE boardtest(
-WRITER VARCHAR2(12) NOT NULL ENABLE, 
-EMAIL VARCHAR2(30) NOT NULL ENABLE, 
-SUBJECT VARCHAR2(50) NOT NULL ENABLE, 
-PASS VARCHAR2(10) NOT NULL ENABLE, 
-READCOUNT NUMBER(5,0) DEFAULT 0 NOT NULL ENABLE, 
-REGDATE TIMESTAMP (6) DEFAULT SYSDATE NOT NULL ENABLE, 
-CONTENT VARCHAR2(4000) NOT NULL ENABLE, 
-IP VARCHAR2(20) NOT NULL ENABLE
- );
- 
-select * from boardtest;
-drop table boardtest;
-declare
-v_num number :=0;
-v_WRITER VARCHAR2(12):='autoWriter';
-v_EMAIL VARCHAR2(30):='autoEmail';
-v_SUBJECT VARCHAR2(50):='autoSubject';
-v_CONTENT VARCHAR2(4000):='autoContent';
-v_IP VARCHAR2(20):='100.0';
-begin
-  
- for i in 0..2
-    loop
-    v_num:=v_num+1;
-    insert into boardtest(writer,email,subject,pass,content,ip) 
-    values(concat(v_WRITER,v_num),concat(v_EMAIL,v_num),concat(v_SUBJECT,v_num),'1111',concat(v_CONTENT,v_num),v_IP);
-    END loop;
- end;
- /
- show error;
 select * from board; 
  select * from board order by regdate desc, ref desc, step asc;
  select * from board order by ref desc, step asc;
