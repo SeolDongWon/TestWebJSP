@@ -213,9 +213,10 @@ CREATE table STUDENT (
  ADDRESS2 VARCHAR2(50) NOT NULL,
  constraint STUDENT_PK primary key (ID)
 );
-
+delete from student where id = 'seol2';
 select * from student;
 desc student;
+commit;
 
 drop table board;
 drop SEQUENCE board_seq;
