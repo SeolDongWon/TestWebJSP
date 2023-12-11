@@ -17,7 +17,7 @@ request.setAttribute("memberList", memberList);
 <title>JSTL Example</title>
 </head>
 <body>
-	<h3>회원 정보</h3>
+	<h3>회원 정보</h3> 
 	<table border="1" width="450">
 		<tr>
 			<th width="50">번호</th>

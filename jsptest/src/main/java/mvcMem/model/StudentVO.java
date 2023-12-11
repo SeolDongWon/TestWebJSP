@@ -12,12 +12,7 @@ public class StudentVO {
 	private String address1;
 	private String address2;
 	
-	
-	
-	public StudentVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public StudentVO() {	}
 	public StudentVO(String id, String pass, String name, String phone1, String phone2, String phone3, String email,
 			String zipcode, String address1, String address2) {
 		super();
@@ -92,7 +87,6 @@ public class StudentVO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	
 	
 	
 }

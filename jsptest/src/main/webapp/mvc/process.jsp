@@ -10,4 +10,4 @@
 	<c:set var="message" value="${requestScope.message}" />
 	<c:out value="${message}" />
 </body>
-</html>
+</html> 

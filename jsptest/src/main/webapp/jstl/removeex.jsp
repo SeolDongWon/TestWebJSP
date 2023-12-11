@@ -13,5 +13,5 @@
 	<p>		browser변수값 제거 후</p>
 		<c:remove var="browser" />
 		<c:out value="${browser}" />
-</body>
+</body> 
 </html>

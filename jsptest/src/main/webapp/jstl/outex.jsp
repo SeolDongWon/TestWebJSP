@@ -8,7 +8,7 @@
 <title>소스 보기</title>
 </head>
 <body>
-	<%
+	<% 
 	FileReader reader = null;
 	try {
 		String path = request.getParameter("path");

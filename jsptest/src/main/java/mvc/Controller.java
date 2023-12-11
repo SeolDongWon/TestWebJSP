@@ -6,6 +6,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String propsP;
 	// 명령어와 명령어 처리 클래스를 쌍으로 저장
 	private Map<String, Object> commandMap = new HashMap<String, Object>();
 
@@ -17,6 +18,7 @@ public class Controller extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// web.xml에서 propertyConfig에 해당하는 init-param의 값을 읽어옴
 		String props = config.getInitParameter("propertyConfig");
+		propsP =props;
 		// 명령어와 처리클래스의 매핑정보를 저장할 Properties객체 생성
 		Properties pr = new Properties();
 		String path = config.getServletContext().getRealPath("/WEB-INF");
@@ -41,6 +43,7 @@ public class Controller extends HttpServlet {
 		while (keyIter.hasNext()) {
 			String command = (String) keyIter.next();
 			String className = pr.getProperty(command);
+			System.out.println(className);
 			try {// 해당 문자열을 클래스로 만든다.
 				Class commandClass = Class.forName(className);
 				Object commandInstance = commandClass.newInstance();// 해당클래스의 객체를 생성
@@ -71,6 +74,7 @@ public class Controller extends HttpServlet {
 	// 시용자의 요청을 분석해서 해당 작업을 처리
 	private void requestPro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("propsP : "+propsP);
 		String view = null;
 		CommandProcess com = null;
 		System.out.println(request.getRequestURI());

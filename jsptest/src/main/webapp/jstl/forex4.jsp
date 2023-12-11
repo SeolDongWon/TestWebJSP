@@ -11,7 +11,7 @@ mapData.put("today", new java.util.Date());
 <html>
 <head>
 <title>forEach 태그</title>
-</head>
+</head> 
 <body>
 	<h4>1부터 100까지 홀수의 합</h4>
 	<c:set var="sum" value="0" />

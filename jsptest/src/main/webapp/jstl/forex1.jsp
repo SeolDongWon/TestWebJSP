@@ -13,7 +13,7 @@ request.setAttribute("movieList", movieList);
 	인기 미국 드라마 :
 	<ul>
 		<c:forEach var="movie" items="${movieList}">
-			<li>${movie}</li>
+			<li>${movie}</li> 
 		</c:forEach>
 	</ul>
 </body>

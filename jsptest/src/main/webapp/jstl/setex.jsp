@@ -8,7 +8,7 @@
 </head>
 <body>
 	<c:set target="${vo}" property="name" value="홍길동" />
-	<c:set target="${vo}" property="email">hong@hanmail.net
+	<c:set target="${vo}" property="email">hong@hanmail.net 
 	<c:set target="${vo}" property="age" value="${age}" />
 	</c:set>
 	<c:set var="age" value="30" />

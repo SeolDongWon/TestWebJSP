@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>MVC х╦©Ь╟║ют</title>
+<meta charset="UTF-8">
+<title>MVCМ ▄Л⌡░Й╟─Л·┘</title>
 </head>
 <body>
-<h3 align="center">Index page ют╢о╢ы.</h3>
-<a href="member.mdo?cmd=login">╥н╠вюн</a><br/>
-<a href="member.mdo?cmd=regForm">х╦©Ь╟║ют</a><br/>
+<h3 align="center">Index Page Л·┘К▀┬К▀╓.</h3>
+<a href="member.mdo?cmd=login">К║°Й╥╦Л²╦</a><br/>
+<a href="member.mdo?cmd=regForm">М ▄Л⌡░Й╟─Л·┘</a><br/>
 </body>
 </html>

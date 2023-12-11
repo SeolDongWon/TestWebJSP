@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mvcMem.action.Action;
+import mvcMem.action.*;
 
 public class MemControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,25 +17,23 @@ public class MemControlServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		String cmd = request.getParameter("cmd");
-		if (cmd != null) {
+		
+		System.out.println("MemControlServlet");
+		System.out.println(cmd);
+		
+		if(cmd!=null) {
 			ActionFactory factory = ActionFactory.getInstance();
 			Action action = factory.getAction(cmd);
 			ActionForward af = action.execute(request, response);
-			if (af.isRedirect()) {
+			if(af.isRedirect()) {
 				response.sendRedirect(af.getUrl());
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher(af.getUrl());
-				rd.forward(request, response);
+			}else {
+				request.getRequestDispatcher(af.getUrl()).forward(request, response);
 			}
-		} else {
+		}else {
 			PrintWriter out = response.getWriter();
-			out.println("<html>");
-			out.println("<head><title>Error</title></head>");
-			out.println("<body>");
-			out.println("<h4>올바른 요청이 아닙니다!</h4>");
-			out.println("<h4>http://localhost:8080/myWeb/mvcMem/member.mdo?cmd=요청키워드</h4>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("<h1>올바른 요청이 아닙니다.</h4>");
 		}
 	}
+
 }

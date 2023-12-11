@@ -15,7 +15,7 @@ request.setAttribute("score", score);
 당신의 성적은 A입니다. </c:when>
 		<c:when test="${score ge 80}">
 당신의 성적은 B입니다. </c:when>
-		<c:when test="${score ge 70}">
+		<c:when test="${score ge 70}"> 
 당신의 성적은 C입니다. </c:when>
 		<c:when test="${score ge 60}">
 당신의 성적은 D입니다. </c:when>

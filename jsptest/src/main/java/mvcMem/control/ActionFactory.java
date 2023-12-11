@@ -1,61 +1,72 @@
 package mvcMem.control;
 
-import mvcMem.action.Action;
+import mvcMem.action.*;
 
 public class ActionFactory {
-	private static ActionFactory factory;
+	private static ActionFactory factory = new ActionFactory();
 
 	private ActionFactory() {
 	}
 
 	public static synchronized ActionFactory getInstance() {
-		if (factory == null) {
-			factory = new ActionFactory();
-		}
 		return factory;
 	}
 
 	public Action getAction(String cmd) {
+		System.out.println("Action.getAction");
 		Action action = null;
 		switch (cmd) {
 		case "index":
-//			action = new IndexAction();
+			System.out.println(cmd);
+			action = new IndexAction();
 			break;
 		case "login":
-//			action = new LoginFormAction();
+			System.out.println(cmd);
+			action = new LoginFormAction();
 			break;
 		case "loginProc":
-//			action = new LoginProcAction();
+			System.out.println(cmd);
+			action = new LoginProcAction();
 			break;
 		case "logout":
-//			action = new LogoutAction();
+			System.out.println(cmd);
+			action = new LogoutAction();
 			break;
 		case "regForm":
-//			action = new RegFormAction();
+			System.out.println(cmd);
+			action = new RegFormAction();
 			break;
 		case "regProc":
-//			action = new RegProcAction();
+			System.out.println(cmd);
+			action = new RegProcAction();
 			break;
 		case "modifyForm":
-//			action = new ModifyFormAction();
+			System.out.println(cmd);
+			action = new ModifyFormAction();
 			break;
 		case "modifyProc":
-//			action = new ModifyProcAction();
+			System.out.println(cmd);
+			action = new ModifyProcAction();
 			break;
 		case "deleteForm":
-//			action = new DeleteFormAction();
+			System.out.println(cmd);
+			action = new DeleteFormAction();
 			break;
 		case "deleteProc":
-//			action = new DeleteProcAction();
+			System.out.println(cmd);
+			action = new DeleteProcAction();
 			break;
 		case "idCheck":
-//			action = new IdCheckAction();
+			System.out.println(cmd);
+			action = new IdCheckAction();
 			break;
 		case "zipCheck":
-//			action = new ZipCheckAction();
+			System.out.println(cmd);
+			action = new ZipCheckAction();
 			break;
 		default:
-//			action = new IndexAction();
+			System.out.println(cmd);
+			action = new IndexAction();
 			break;
 		}
 		return action;

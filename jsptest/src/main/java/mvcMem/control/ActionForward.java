@@ -1,12 +1,13 @@
 package mvcMem.control;
+
 public class ActionForward {
 	private String url;
 	private boolean redirect;
-	public ActionForward(){ }
-	public ActionForward(String url){ 
+	public ActionForward() {	}
+	public ActionForward(String url) {
 		this.url = url;
 	}
-	public ActionForward(String url,boolean redirect){ 
+	public ActionForward(String url, boolean redirect) {
 		this.url = url;
 		this.redirect = redirect;
 	}
@@ -22,4 +23,6 @@ public class ActionForward {
 	public void setRedirect(boolean redirect) {
 		this.redirect = redirect;
 	}
+	
+	
 }

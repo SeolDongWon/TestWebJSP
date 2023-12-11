@@ -11,7 +11,7 @@
 	<c:set var="str2" value="사용" />
 	<c:set var="tokens" value="1,2,3,4,5,6,7,8,9,10" />
 	<br></br> str1 : ${str1}
-	<br></br> str2 : ${str2}
+	<br></br> str2 : ${str2} 
 	<br></br> tokens : ${tokens}
 	<br></br> length(str1) = ${fn:length(str1)}
 	<br></br> toUpperCase(str1) = "${fn:toUpperCase(str1)}"
