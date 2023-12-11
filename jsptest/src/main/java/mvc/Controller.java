@@ -46,6 +46,8 @@ public class Controller extends HttpServlet {
 				Object commandInstance = commandClass.newInstance();// 해당클래스의 객체를 생성
 				// Map객체인 commandMap에 객체 저장
 				commandMap.put(command, commandInstance);
+				System.out.println("commandMap.toString()");
+				System.out.println(commandMap.toString());
 			} catch (ClassNotFoundException e) {
 				throw new ServletException(e);
 			} catch (InstantiationException e) {
@@ -71,9 +73,12 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		String view = null;
 		CommandProcess com = null;
+		System.out.println(request.getRequestURI());
+		System.out.println(request.getRequestURL());
+		System.out.println(request.getContextPath());
 		try {
-			String command = request.getRequestURI();
-			if (command.indexOf(request.getContextPath()) == 0) {
+			String command = request.getRequestURI(); // /jsptest/mvc/message.di
+			if (command.indexOf(request.getContextPath()) == 0) { // /jsptest
 				command = command.substring(request.getContextPath().length());
 			}
 			com = (CommandProcess) commandMap.get(command);

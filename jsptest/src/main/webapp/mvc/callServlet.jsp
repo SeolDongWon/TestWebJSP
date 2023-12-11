@@ -9,6 +9,8 @@
 <body>
 	<a href=" http://localhost:8080/jsptest/mvc/test.do?cmd=index">인덱스 요청</a>
 	<a href=" http://localhost:8080/jsptest/mvc/test.do">잘못된 요청</a>
+	<a href=" http://localhost:8080/jsptest/mvc/message.di">요청 URI자체 사용</a>
+	<a href=" http://localhost:8080/jsptest/mvc/login.di">요청 URI자체 사용</a>
 	
 
 </body>

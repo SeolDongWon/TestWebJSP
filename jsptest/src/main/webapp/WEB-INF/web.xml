@@ -221,12 +221,36 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>MemControlServlet</display-name>
+    <servlet-name>MemControlServlet</servlet-name>
+    <servlet-class>mvcMem.control.MemControlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemControlServlet</servlet-name>
+    <url-pattern>/MemControlServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>Controller</display-name>
     <servlet-name>Controller</servlet-name>
     <servlet-class>mvc.Controller</servlet-class>
+    <init-param>
+      <param-name>propertyConfig</param-name>
+      <param-value>Command.properties</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
-    <url-pattern>/Controller</url-pattern>
+    <url-pattern>*.di</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MessageProcess</display-name>
+    <servlet-name>MessageProcess</servlet-name>
+    <servlet-class>mvc.MessageProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageProcess</servlet-name>
+    <url-pattern>/MessageProcess</url-pattern>
   </servlet-mapping>
 </web-app>
