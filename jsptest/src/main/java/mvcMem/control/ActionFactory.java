@@ -11,7 +11,7 @@ public class ActionFactory {
 	public static synchronized ActionFactory getInstance() {
 		return factory;
 	}
-
+	
 	public Action getAction(String cmd) {
 		System.out.println("Action.getAction");
 		Action action = null;
@@ -22,47 +22,48 @@ public class ActionFactory {
 			break;
 		case "login":
 			System.out.println(cmd);
-			action = new LoginFormAction();
+//			action = new LoginFormAction();
 			break;
 		case "loginProc":
 			System.out.println(cmd);
-			action = new LoginProcAction();
+//			action = new LoginProcAction();
 			break;
 		case "logout":
 			System.out.println(cmd);
-			action = new LogoutAction();
+//			action = new LogoutAction();
 			break;
 		case "regForm":
 			System.out.println(cmd);
-			action = new RegFormAction();
+//			action = new RegFormAction();
+			
 			break;
 		case "regProc":
 			System.out.println(cmd);
-			action = new RegProcAction();
+//			action = new RegProcAction();
 			break;
 		case "modifyForm":
 			System.out.println(cmd);
-			action = new ModifyFormAction();
+//			action = new ModifyFormAction();
 			break;
 		case "modifyProc":
 			System.out.println(cmd);
-			action = new ModifyProcAction();
+//			action = new ModifyProcAction();
 			break;
 		case "deleteForm":
 			System.out.println(cmd);
-			action = new DeleteFormAction();
+//			action = new DeleteFormAction();
 			break;
 		case "deleteProc":
 			System.out.println(cmd);
-			action = new DeleteProcAction();
+//			action = new DeleteProcAction();
 			break;
 		case "idCheck":
 			System.out.println(cmd);
-			action = new IdCheckAction();
+//			action = new IdCheckAction();
 			break;
 		case "zipCheck":
 			System.out.println(cmd);
-			action = new ZipCheckAction();
+//			action = new ZipCheckAction();
 			break;
 		default:
 			System.out.println(cmd);

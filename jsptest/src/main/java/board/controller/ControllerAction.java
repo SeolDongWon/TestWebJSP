@@ -57,7 +57,9 @@ public class ControllerAction extends HttpServlet {
 			// 객체를 하나씩 꺼내서 그 객체명으로 Properties객체에 저장된 객체에 접근
 			while (keyIter.hasNext()) {
 				String command = (String) keyIter.next();
+				System.out.println("keyIter command :"+command);
 				String className = pr.getProperty(command);
+				System.out.println("getProperty className : "+ className);
 
 				try {
 					Class commandClass = Class.forName(className);

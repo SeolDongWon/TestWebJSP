@@ -233,7 +233,7 @@
 		<servlet-name>MemControlServlet</servlet-name>
 		<url-pattern>/MemControlServlet</url-pattern>
 	</servlet-mapping>
-	<!-- <servlet>
+	<servlet>
 		<description></description>
 		<display-name>Controller</display-name>
 		<servlet-name>Controller</servlet-name>
@@ -246,7 +246,7 @@
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
 		<url-pattern>*.di</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 	<servlet>
 		<description></description>
 		<display-name>MessageProcess</display-name>
@@ -269,7 +269,7 @@
 		<servlet-name>ControllerAction</servlet-name> <servlet-class>board.controller.ControllerAction</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>ControllerAction</servlet-name> 
 		<url-pattern>/ControllerAction</url-pattern> </servlet-mapping> -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>Controller</servlet-name>
 		<servlet-class>board.controller.ControllerAction</servlet-class>
 		<init-param>
@@ -280,6 +280,5 @@
 	<servlet-mapping>
 		<servlet-name>Controller</servlet-name>
 		<url-pattern>*.bdo</url-pattern>
-	</servlet-mapping>
-
+	</servlet-mapping> -->
 </web-app>

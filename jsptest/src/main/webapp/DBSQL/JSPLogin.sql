@@ -271,6 +271,8 @@ begin
  commit;
  
 select * from board; 
+update board set ref=5 where num=6;
+update board set step=step+1, depth=depth+1 where num=7;
  select * from board order by regdate desc, ref desc, step asc;
  select * from board order by ref desc, step asc;
  select * from (select rownum rnum, num, writer, email, subject, pass, regdate, readcount, ref, step, depth, content, ip from (select * from board order by ref desc, step asc)) where rnum>=1 and rnum<=10;
