@@ -19,12 +19,6 @@
 		System.out.println("세션 아이디 : " + sessionId);
 		String name = (String) session.getAttribute("name");
 
-		/* Enumeration enumData = session.getAttributeNames();
-		while (enumData.hasMoreElements()) {
-			System.out.println(enumData.nextElement());
-			String dataName = (String) enumData.nextElement();
-			request.setAttribute(dataName, session.getAttribute(dataName));
-		}*/
 	%>
 	<table border='1' width='300'>
 		<tr>
@@ -32,6 +26,7 @@
 		</tr>
 		<tr>
 			<td align='center'><a href='/jsptest/projectS1/UpdateMemberInfoForm.jsp'>회원정보</a>
+			<a href='/jsptest/projectS1/deleteMemberForm.jsp'>탈퇴하기</a>
 				<a href='/jsptest/projectS1/Logout.jsp'>로그아웃</a></td>
 		</tr>
 	</table>

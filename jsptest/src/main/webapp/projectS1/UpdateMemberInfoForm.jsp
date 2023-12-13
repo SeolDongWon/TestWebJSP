@@ -88,7 +88,6 @@
 							name="detailAddress" id="detailAddress" placeholder="상세주소"
 							onfocus="focusOn(id)" onblur="focusOff(id);addressCheck()"
 							size="50px" value="<%=session.getAttribute("detailAddress")%>" > 
-							<!-- <input type="text" name="address"id="address" placeholder="adress" style="display: none;"> -->
 						</td>
 					</tr>
 					<tr>

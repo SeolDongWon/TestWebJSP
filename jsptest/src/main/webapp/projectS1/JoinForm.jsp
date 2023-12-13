@@ -10,8 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JoinForm.jsp</title>
 <!-- addressAPI -->
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
@@ -101,7 +100,7 @@
 						<td></td>
 						<td><input type="button" value="회원가입" onclick="joinSend()" />
 						</td>
-						<td><a href="/jsptest/projectS1/JoinMain.jsp">JoinMain</a></td>
+						<td><a href="/jsptest/projectS1/JoinMain.jsp"><input type="button" value="취소"/></a></td>
 					</tr>
 				</table>
 			</form>
@@ -277,7 +276,7 @@ input {
     		return false;
     	}
     	let id = document.joinForm.id.value;
-    	let options = 'width=auto, height=auto';
+    	let options = 'width=100px, height=100px';
     	window.open('/jsptest/projectS1/IdDuplicateCheck.jsp?id='+id,'idDupCheck',options);
     	
     }

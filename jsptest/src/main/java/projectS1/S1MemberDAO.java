@@ -181,7 +181,7 @@ public class S1MemberDAO {
 		}
 		return idCheck;
 	}
-	
+
 	public synchronized void updateMemberList(S1MemberVO s1MVO) {
 		ConnectionPool pool = null;
 		Connection conn = null;
@@ -217,5 +217,41 @@ public class S1MemberDAO {
 			}
 		}
 	}
-	
+
+	public int deleteMember(String id, String pass) {
+		System.out.println(id);
+		System.out.println(pass);
+		ConnectionPool pool = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		StringBuffer sql = new StringBuffer();
+		pool = ConnectionPool.getInstance();
+		int result = 0; // 결과치
+
+		try {
+			conn = pool.getConnection();
+				pstmt = conn.prepareStatement("delete from projects1member where id=? and password=?");
+				pstmt.setString(1, id);
+				pstmt.setString(2, pass);
+				if (0 < pstmt.executeUpdate()) {
+				result = 1;// 회원탈퇴 성공
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 }

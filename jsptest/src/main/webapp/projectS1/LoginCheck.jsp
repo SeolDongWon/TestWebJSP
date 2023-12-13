@@ -8,7 +8,6 @@
 S1MemberDAO s1MDA = new S1MemberDAO();
 S1MemberVO s1MV = s1MDA.LoginCheck(sMVB);
 if (s1MV != null) {
-	/* session.setAttribute("s1MV", s1MV); */
 	session.setAttribute("id", s1MV.getId());
 	session.setAttribute("password", s1MV.getPassword());
 	session.setAttribute("name", s1MV.getName());
@@ -32,15 +31,4 @@ System.out.println("로그인실패");
 </script>
 <%
 }
-/* response.sendRedirect("JoinMain.jsp"); */
 %>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html> -->

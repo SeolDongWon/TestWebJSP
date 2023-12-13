@@ -16,23 +16,9 @@ boolean idCheck = sMDA.idDuplicateCheck(id);
 <body> -->
 <!-- </body> -->
 <script>
-	let idCheck =
-<%=idCheck%>
-	;
-	console.log(idCheck);
-	if (!idCheck) {
-		alert('id사용가능');
-	} else {
-		let nono = "id중복 사용 불가 ";
-		let i = 0
-		while (i < 30) {
-			nono += "id중복 사용 불가 ";
-			i++;
-		}
-		alert(nono);
+	if (<%=idCheck%>) {
+  opener.document.getElementById('idError').innerHTML="id중복 사용 불가 "
 	}
-	console.log(opener.document.getElementById("id").value);
-	opener.document.getElementById("id").value="sssssss";
 	window.close();
 </script>
 <!-- </html> -->

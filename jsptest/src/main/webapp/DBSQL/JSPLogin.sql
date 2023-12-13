@@ -173,7 +173,7 @@ constraint projectseolmember_pk PRIMARY KEY (id)
 );
 
 select * from projects1member;
-
+select * from projects1member order by rownum;
 
 
 eolmember;
