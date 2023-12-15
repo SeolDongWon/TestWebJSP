@@ -270,6 +270,17 @@ begin
  show error;
  commit;
  
+ select * from (select rownum rnum, sq.* from (select * from board order by ref desc, step asc)sq);
+ select * from (select rownum rnum, sq.* from (select * from board order by ref desc, step asc)sq) where 1<= rnum and rnum<=10;
+ 
+ select * from board  where subject like '%3%' order by ref desc, step asc;
+ select rownum rnum, sq.* from (select * from board where subject like '%3%' order by ref desc, step asc)sq;
+ select * from (select rownum rnum, sq.* from (select * from board where subject like '%3%'  order by ref desc, step asc)sq) where 1<= rnum and rnum<=10;
+ 
+ select count(*) from board  where subject like '%3%' order by ref desc, step asc;
+ 
+ select * from board order by ref desc, step asc;
+ 
 select * from board; 
 update board set ref=5 where num=6;
 update board set step=step+1, depth=depth+1 where num=7;
